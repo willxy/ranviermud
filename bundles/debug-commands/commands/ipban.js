@@ -31,7 +31,7 @@ module.exports = srcPath => {
 
       const bannedFile = srcPath + '../data/banned.json';
       const bannedList = Data.parseFile(bannedFile);
-      bannedList.push(target.socket.address().address);
+      bannedList.push(target.socket.socket.remoteAddress);
       Data.saveFile(bannedFile, bannedList);
 
       B.sayAt(target, '<b><red>SLAM! A mighty hammer appears from the sky and crushes you! You have been BANNED!</red></b>');

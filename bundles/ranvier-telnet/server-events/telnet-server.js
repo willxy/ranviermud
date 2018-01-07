@@ -19,7 +19,7 @@ module.exports = srcPath => {
           telnetSocket.telnetCommand(Telnet.Sequences.WILL, Telnet.Options.OPT_EOR);
 
           const banned = Data.parseFile(srcPath + '/../data/banned.json');
-          if (banned.includes(telnetSocket.address().address)) {
+          if (banned.includes(telnetSocket.socket.remoteAddress)) {
             return telnetSocket.destroy();
           }
 
